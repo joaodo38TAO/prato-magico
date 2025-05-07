@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monte Seu Prato Mágico!</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fef9e7;
+      text-align: center;
+    }
+    h1 {
+      color: #4caf50;
+    }
+    #plate {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+      border: 5px solid #ccc;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #fff;
+    }
+    .zone {
+      width: 50%;
+      height: 50%;
+      box-sizing: border-box;
+      border: 2px dashed #aaa;
+      padding: 5px;
+    }
+    .food {
+      width: 80px;
+      margin: 10px;
+      padding: 10px;
+      background-color: #ffe082;
+      border: 1px solid #999;
+      border-radius: 10px;
+      cursor: grab;
+      display: inline-block;
+    }
+    #foods {
+      margin: 20px;
+    }
+    #feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+    }
+    .highlight {
+      background-color: #dcedc8 !important;
+      border: 2px solid #7cb342 !important;
+    }
+  </style>
+</head>
+<body>
+  <h1>Monte Seu Prato Mágico!</h1>
+  <div id="plate">
+    <div class="zone" data-zone="frutas"></div>
+    <div class="zone" data-zone="carboidratos"></div>
+    <div class="zone" data-zone="proteinas"></div>
+    <div class="zone" data-zone="outros"></div>
+  </div>
+  <div id="foods"></div>
+  <button onclick="checkPlate()">Verificar Prato</button>
+  <button onclick="generateFoods()">Nova Rodada</button>
+  <div id="feedback"></div>
+  <script src="main.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registrado'))
+        .catch(error => console.error('Erro ao registrar Service Worker:', error));
+    }
+  </script>
+</body>
+</html>
